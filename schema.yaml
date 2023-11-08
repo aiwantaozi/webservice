@@ -1,8 +1,6 @@
 openapi: 3.0.3
 info:
   title: OpenAPI schema for template webservice
-  x-walrus-constraint:
-    version: ">=0.4.0-rc1"
 components:
   schemas:
     variables:
@@ -30,6 +28,7 @@ components:
           title: Environment Variables
           type: object
           description: Name and value pairs to set as the environment variables
+          default: {}
           additionalProperties:
             type: string
           x-walrus-ui:
@@ -45,7 +44,7 @@ components:
           title: CPU Request
           type: string
           description: CPU request. e.g. 0.5, 1, 2
-          default: '0.1'
+          default: "0.1"
           x-walrus-ui:
             group: Resources
         request_memory:
@@ -59,41 +58,70 @@ components:
           title: CPU Limit
           type: string
           description: CPU limit. e.g. 0.5, 1, 2
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Resources
         limit_memory:
           title: Memory Limit
           type: string
           description: Memory limit. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Resources
         namespace:
           title: Namespace
           type: string
           description: Namespace to deploy. Auto-generated if empty.
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Advanced
         name:
           title: Deployment Name
           type: string
           description: Name of the deployment resource. Auto-generated if empty.
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Advanced
-        walrus_metadata_service_name:
-          title: walrus_metadata_service_name
-          type: string
-          description: Walrus metadata service name.
-          default: ''
+        walrus_context:
+          title: walrus_context
+          type: object
+          description: Walrus context.
+          default:
+            environment_id: ""
+            environment_name: ""
+            project_id: ""
+            project_name: ""
+            service_id: ""
+            service_name: ""
+          required:
+          - environment_id
+          - environment_name
+          - project_id
+          - project_name
+          - service_id
+          - service_name
+          properties:
+            environment_id:
+              title: environment_id
+              type: string
+            environment_name:
+              title: environment_name
+              type: string
+            namespace:
+              title: namespace
+              type: string
+            project_id:
+              title: project_id
+              type: string
+            project_name:
+              title: project_name
+              type: string
+            service_id:
+              title: service_id
+              type: string
+            service_name:
+              title: service_name
+              type: string
           x-walrus-ui:
-            hidden: true
-        walrus_metadata_namespace_name:
-          title: walrus_metadata_namespace_name
-          type: string
-          description: Walrus metadata namespace name.
-          default: ''
-          x-walrus-ui:
+            group: Basic
             hidden: true

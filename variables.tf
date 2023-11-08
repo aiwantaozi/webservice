@@ -68,14 +68,24 @@ variable "name" {
   default     = ""
 }
 # @hidden
-variable "walrus_metadata_service_name" {
-  type        = string
-  description = "Walrus metadata service name."
-  default     = ""
+variable "walrus_context" {
+  type = object({
+    project_name     = string
+    environment_name = string
+    service_name     = string
+    project_id       = string
+    environment_id   = string
+    service_id       = string
+    namespace        = optional(string)
+  })
+  description = "Walrus context."
+  default = {
+    project_name     = ""
+    environment_name = ""
+    service_name     = ""
+    project_id       = ""
+    environment_id   = ""
+    service_id       = ""
+  }
 }
-# @hidden
-variable "walrus_metadata_namespace_name" {
-  type        = string
-  description = "Walrus metadata namespace name."
-  default     = ""
-}
+
