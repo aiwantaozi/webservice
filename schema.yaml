@@ -1,6 +1,8 @@
 openapi: 3.0.3
 info:
   title: OpenAPI schema for template webservice
+  x-walrus-constraint:
+    version: ">=0.4.0-rc1"
 components:
   schemas:
     variables:
