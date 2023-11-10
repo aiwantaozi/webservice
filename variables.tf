@@ -79,3 +79,16 @@ variable "walrus_metadata_namespace_name" {
   description = "Walrus metadata namespace name."
   default     = ""
 }
+# @hidden
+variable "walrus_context" {
+  type = object({
+    project_name     = string
+    environment_name = string
+    resource_name    = string
+    project_id       = string
+    environment_id   = string
+    resource_id      = string
+    namespace        = optional(string)
+  })
+  description = "Walrus context."
+}
