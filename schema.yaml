@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: OpenAPI schema for template webservice
   x-walrus-constraint:
-    version: ">=0.4.0-rc1"
+    version: '>=0.4.0-rc1'
 components:
   schemas:
     variables:
@@ -100,45 +100,29 @@ components:
           x-walrus-ui:
             group: Basic
             hidden: true
-        walrus_context:
-          title: walrus_context
+        context:
+          title: context
           type: object
-          description: Walrus context.
-          default:
-            environment_id: ""
-            environment_name: ""
-            project_id: ""
-            project_name: ""
-            service_id: ""
-            service_name: ""
-          required:
-          - environment_id
-          - environment_name
-          - project_id
-          - project_name
-          - service_id
-          - service_name
-          properties:
-            environment_id:
-              title: environment_id
-              type: string
-            environment_name:
-              title: environment_name
-              type: string
-            namespace:
-              title: namespace
-              type: string
-            project_id:
-              title: project_id
-              type: string
-            project_name:
-              title: project_name
-              type: string
-            resource_id:
-              title: resource_id
-              type: string
-            resource_name:
-              title: resource_name
-              type: string
+          description: |
+            Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
+
+            Examples:
+            ```
+            context:
+              project:
+                name: string
+                id: string
+              environment:
+                name: string
+                id: string
+              resource:
+                name: string
+                id: string
+            ```
+          default: {}
+          additionalProperties:
+            type: object
           x-walrus-ui:
             group: Basic
+            hidden: true
+        null: null

@@ -80,15 +80,24 @@ variable "walrus_metadata_namespace_name" {
   default     = ""
 }
 # @hidden
-variable "walrus_context" {
-  type = object({
-    project_name     = string
-    environment_name = string
-    resource_name    = string
-    project_id       = string
-    environment_id   = string
-    resource_id      = string
-    namespace        = optional(string)
-  })
-  description = "Walrus context."
+variable "context" {
+  description = <<-EOF
+Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
+
+Examples:
+```
+context:
+  project:
+    name: string
+    id: string
+  environment:
+    name: string
+    id: string
+  resource:
+    name: string
+    id: string
+```
+EOF
+  type        = map(any)
+  default     = {}
 }
