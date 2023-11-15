@@ -61,6 +61,6 @@ data "kubernetes_service" "service" {
 }
 
 locals {
-  name      = coalesce(try(var.context["resource"]["name"], null), "example")
-  namespace = coalesce(var.namespace, var.context["environment"]["namespace"])
+  name      = coalesce(try(var.walrus_metadata_service_name, null), try(var.context["resource"]["name"], null))
+  namespace = coalesce(try(var.namespace, null), try(var.walrus_metadata_namespace_name, null), try(var.context["environment"]["namespace"], null))
 }

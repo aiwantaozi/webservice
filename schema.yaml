@@ -125,4 +125,3 @@ components:
           x-walrus-ui:
             group: Basic
             hidden: true
-        null: null
